@@ -44,4 +44,10 @@ public class ProductController {
 	public ResponseEntity<Boolean> delete(@PathVariable Long productID) throws FileNotFoundException {
 		return new ResponseEntity<Boolean>(this.service.delete(productID), HttpStatus.NO_CONTENT);
 	}
+	//Update
+	@PutMapping("/update/{productID}")
+	public ResponseEntity<Product> update(@PathVariable Long productID, @RequestBody Product product) { 
+	return new ResponseEntity<Product>(this.service.update(product, productID), HttpStatus.ACCEPTED);
+
+	}
 }
