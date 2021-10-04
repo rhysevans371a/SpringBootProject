@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.qa.spring.domain.Product;
-import com.qa.spring.exceptions.PersonNotFoundException;
+
 import com.qa.spring.repo.ProductRepository;
 
 /**
@@ -21,13 +21,13 @@ public class ProductService {
 	private ProductRepository repo;
 
 //	Read All
-	public List<Product> listAll() {
+	public List<Product> readAll() {
 		return repo.findAll();
 	}
 
 //	Create
-	public void create(Product product) {
-		repo.save(product);
+	public Product create(Product product) {
+		return repo.save(product);
 	}
 
 //	Read
@@ -36,7 +36,7 @@ public class ProductService {
 	}
 	//update 
 		public Product update(Product product, Long productID) {
-			Product exists = this.repo.findById(productID);
+			Product exists = this.repo.findById(productID).get();
 			exists.setProductName(product.getProductName());
 			exists.setAisleName(product.getAisleName());
 			exists.setUnitPrice(product.getUnitPrice());

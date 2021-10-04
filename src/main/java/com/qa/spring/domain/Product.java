@@ -26,7 +26,7 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long productID;
-	@NotNull
+//	@NotNull
 	private String productName;
 	
 	private String aisleName;
