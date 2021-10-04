@@ -1,11 +1,13 @@
 package com.qa.spring.services;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.qa.spring.domain.Product;
+import com.qa.spring.exceptions.PersonNotFoundException;
 import com.qa.spring.repo.ProductRepository;
 
 /**
@@ -42,5 +44,13 @@ public class ProductService {
 			return this.repo.saveAndFlush(exists);
 
 		}
-
+		
+		//delete
+		public boolean delete(Long id) throws FileNotFoundException {
+			if (!this.repo.existsById(id)) {
+				throw new FileNotFoundException();
+			}
+			this.repo.deleteById(id);
+			return !this.repo.existsById(id);
+		}
 }
