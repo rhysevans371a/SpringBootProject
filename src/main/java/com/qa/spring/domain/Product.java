@@ -72,4 +72,75 @@ public class Product {
 	public Product() {
 		super();
 	}
+//	Getters and setters
+	
+	/**
+	 * @return the productID
+	 */
+	public Long getProductID() {
+		return productID;
+	}
+
+	/**
+	 * @param productID the productID to set
+	 */
+	public void setProductID(Long productID) {
+		this.productID = productID;
+	}
+
+	/**
+	 * @return the productName
+	 */
+	public String getProductName() {
+		return productName;
+	}
+
+	/**
+	 * @param productName the productName to set
+	 */
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	/**
+	 * @return the aisleName
+	 */
+	public String getAisleName() {
+		return aisleName;
+	}
+
+	/**
+	 * @param aisleName the aisleName to set
+	 */
+	public void setAisleName(String aisleName) {
+		this.aisleName = aisleName;
+	}
+
+	/**
+	 * @return the unitSize
+	 */
+	public String getUnitSize() {
+		return unitSize;
+	}
+
+	/**
+	 * @param unitSize the unitSize to set
+	 */
+	public void setUnitSize(String unitSize) {
+		this.unitSize = unitSize;
+	}
+
+	/**
+	 * @return the unitPrice
+	 */
+	public double getUnitPrice() {
+		return unitPrice;
+	}
+
+	/**
+	 * @param unitPrice the unitPrice to set
+	 */
+	public void setUnitPrice(double unitPrice) {
+		this.unitPrice = unitPrice;
+	}
 }
