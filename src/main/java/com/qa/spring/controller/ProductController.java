@@ -33,4 +33,9 @@ public class ProductController {
 	public ResponseEntity <Product> create(@RequestBody Product product) {
 		return new ResponseEntity <Product> (this.service.create(product),HttpStatus.CREATED);
 	}
+	//Read ID
+	@GetMapping("/read/{productID}")
+	public ResponseEntity<Product> read(@PathVariable Long productID) {
+		return new ResponseEntity <Product>(this.service.read(productID),HttpStatus.OK);
+	}
 }
