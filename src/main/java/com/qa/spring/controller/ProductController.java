@@ -1,5 +1,6 @@
 package com.qa.spring.controller;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +38,10 @@ public class ProductController {
 	@GetMapping("/read/{productID}")
 	public ResponseEntity<Product> read(@PathVariable Long productID) {
 		return new ResponseEntity <Product>(this.service.read(productID),HttpStatus.OK);
+	}
+	//delete
+	@DeleteMapping("/delete/{productID}")
+	public ResponseEntity<Boolean> delete(@PathVariable Long productID) throws FileNotFoundException {
+		return new ResponseEntity<Boolean>(this.service.delete(productID), HttpStatus.NO_CONTENT);
 	}
 }
