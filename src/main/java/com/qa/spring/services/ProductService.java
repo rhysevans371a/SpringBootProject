@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.qa.spring.domain.Product;
-
 import com.qa.spring.repo.ProductRepository;
 
 /**
@@ -30,8 +29,18 @@ public class ProductService {
 	}
 
 //	Read
-	public Product read(Long id) {
-		return this.repo.findById(id).get();
+	public Product read(Long productID) {
+		return this.repo.findById(productID).get();
 	}
+	//update 
+		public Product update(Product product, Long productID) {
+			Product exists = this.repo.findById(productID);
+			exists.setProductName(product.getProductName());
+			exists.setAisleName(product.getAisleName());
+			exists.setUnitPrice(product.getUnitPrice());
+			exists.setUnitSize(product.getUnitSize());
+			return this.repo.saveAndFlush(exists);
+
+		}
 
 }
