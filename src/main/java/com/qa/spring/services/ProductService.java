@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.qa.spring.domain.Product;
+
 import com.qa.spring.repo.ProductRepository;
 
 /**
@@ -17,13 +18,20 @@ public class ProductService {
 //	Create instance of repository
 	@Autowired
 	private ProductRepository repo;
-	
+
 //	Read All
-	public List<Product> listAll(){
+	public List<Product> listAll() {
 		return repo.findAll();
 	}
+
 //	Create
 	public void create(Product product) {
 		repo.save(product);
 	}
+
+//	Read
+	public Product read(Long id) {
+		return this.repo.findById(id).get();
+	}
+
 }
