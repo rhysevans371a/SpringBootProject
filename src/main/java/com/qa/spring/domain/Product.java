@@ -3,6 +3,8 @@
  */
 package com.qa.spring.domain;
 
+import java.util.Objects;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -143,4 +145,34 @@ public class Product {
 	public void setUnitPrice(double unitPrice) {
 		this.unitPrice = unitPrice;
 	}
+	// toString, equals and hashCode methods
+	
+		@Override
+		public String toString() {
+			return "Product [productID=" + productID + ", productName=" + productName + ", aisleName=" + aisleName
+					+ ", unitSize=" + unitSize + ", unitPrice=" + unitPrice + "]";
+		}
+
+
+		@Override
+		public int hashCode() {
+			return Objects.hash(aisleName, productID, productName, unitPrice, unitSize);
+		}
+
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Product other = (Product) obj;
+			return Objects.equals(aisleName, other.aisleName) && Objects.equals(productID, other.productID)
+					&& Objects.equals(productName, other.productName)
+					&& Double.doubleToLongBits(unitPrice) == Double.doubleToLongBits(other.unitPrice)
+					&& Objects.equals(unitSize, other.unitSize);
+		}
+		
 }
