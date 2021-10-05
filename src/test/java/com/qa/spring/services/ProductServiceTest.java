@@ -59,4 +59,19 @@ public class ProductServiceTest {
         assertEquals(output, this.service.read(1L));
         Mockito.verify(this.repo, Mockito.times(1)).findById(1L);
     }
+    @Test
+    public void updateTest() {
+        Product input = new Product(1L, "Apple", "Fruit", "each", 0.50);
+        Optional<Product> existing = Optional.of(new Product(1L, "Pear", "Fruit", "each", 0.50));
+        Product output = new Product(1L, "Apple", "Fruit", "each", 0.50);
+       
+        Mockito.when(this.repo.findById(1L)).thenReturn(existing);
+        Mockito.when(this.repo.saveAndFlush(output)).thenReturn(output);
+       
+        assertEquals(output, this.service.update(input, 1L));
+       
+        Mockito.verify(this.repo, Mockito.times(1)).findById(1L);
+        Mockito.verify(this.repo, Mockito.times(1)).saveAndFlush(output);
+    }
+    
 }
