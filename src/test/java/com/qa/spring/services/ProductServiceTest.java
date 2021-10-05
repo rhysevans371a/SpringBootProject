@@ -2,6 +2,9 @@ package com.qa.spring.services;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -31,5 +34,13 @@ public class ProductServiceTest {
 		assertEquals(output, this.service.create(input));
 		
 		Mockito.verify(this.repo, Mockito.times(1)).save(input);
+	}
+	@Test
+	public void getAllTest() {
+		List<Product> output = new ArrayList<>();
+		output.add(new Product("Apple", "Fruit", "each", 0.50));
+		Mockito.when(this.repo.findAll()).thenReturn(output);
+		assertEquals(output, this.service.readAll());
+		Mockito.verify(this.repo, Mockito.times(1)).findAll();
 	}
 }
