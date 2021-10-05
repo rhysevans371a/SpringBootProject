@@ -3,9 +3,7 @@ package com.qa.spring.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import com.qa.spring.domain.Product;
 import com.qa.spring.repo.ProductRepository;
@@ -52,15 +50,13 @@ public class ProductService {
 	}
 
 	// delete
-	public boolean delete(Long id) {
-		if (!this.repo.existsById(id)) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No product found");
-		}
-		this.repo.deleteById(id);
-		return !this.repo.existsById(id);
+	public boolean delete(Long productID) {
+		this.repo.deleteById(productID);
+		return !this.repo.existsById(productID);
 	}
-	//Findbyname
-		public List<Product> findByName(String name) {
-			return this.repo.findByName(name);
-		}
+
+	// Findbyname
+	public List<Product> findByName(String name) {
+		return this.repo.findByName(name);
+	}
 }
