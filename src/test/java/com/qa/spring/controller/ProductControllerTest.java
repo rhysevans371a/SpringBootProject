@@ -62,4 +62,17 @@ public class ProductControllerTest {
 			.andExpect(status().isOk())
 			.andExpect(content().json(outputAsJSON));
 	}
+	@Test
+	public void readIdTest() throws Exception {
+		Product product = new Product("Apple", "Fruit", "each", 0.50);
+		String productAsJSON = this.mapper.writeValueAsString(product);
+		
+		Mockito.when(this.service.read(1L)).thenReturn(product);
+		
+		mvc.perform(get("/Product/read/1")
+			.contentType(MediaType.APPLICATION_JSON))
+			.andExpect(status().isOk())
+			.andExpect(content().json(productAsJSON));
+	}
+	
 }
