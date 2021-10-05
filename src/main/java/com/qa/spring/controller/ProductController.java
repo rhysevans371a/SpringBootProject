@@ -2,6 +2,7 @@ package com.qa.spring.controller;
 
 import java.io.FileNotFoundException;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,28 +27,38 @@ public class ProductController {
 	private ProductService service;
 
 	@GetMapping("/Read")
-	public ResponseEntity <List<Product>> readAll() {
-		return new ResponseEntity <List<Product>> (this.service.readAll(),HttpStatus.OK);
+	public ResponseEntity<List<Product>> readAll() {
+		return new ResponseEntity<List<Product>>(this.service.readAll(), HttpStatus.OK);
 	}
+
 	// create
 	@PostMapping("/create")
-	public ResponseEntity <Product> create(@RequestBody Product product) {
-		return new ResponseEntity <Product> (this.service.create(product),HttpStatus.CREATED);
+	public ResponseEntity<Product> create(@RequestBody Product product) {
+		return new ResponseEntity<Product>(this.service.create(product), HttpStatus.CREATED);
 	}
-	//Read ID
+
+	// Read ID
 	@GetMapping("/read/{productID}")
 	public ResponseEntity<Product> read(@PathVariable Long productID) {
-		return new ResponseEntity <Product>(this.service.read(productID),HttpStatus.OK);
+		try {
+			Product product = service.read(productID);
+			return new ResponseEntity<Product>(this.service.read(productID), HttpStatus.OK);
+		} 
+		catch (NoSuchElementException e) {
+			return new ResponseEntity<Product>(HttpStatus.NOT_FOUND);
+		}
 	}
-	//delete
+
+	// delete
 	@DeleteMapping("/delete/{productID}")
 	public ResponseEntity<Boolean> delete(@PathVariable Long productID) throws FileNotFoundException {
 		return new ResponseEntity<Boolean>(this.service.delete(productID), HttpStatus.NO_CONTENT);
 	}
-	//Update
+
+	// Update
 	@PutMapping("/update/{productID}")
-	public ResponseEntity<Product> update(@PathVariable Long productID, @RequestBody Product product) { 
-	return new ResponseEntity<Product>(this.service.update(product, productID), HttpStatus.ACCEPTED);
+	public ResponseEntity<Product> update(@PathVariable Long productID, @RequestBody Product product) {
+		return new ResponseEntity<Product>(this.service.update(product, productID), HttpStatus.ACCEPTED);
 
 	}
 }
