@@ -61,4 +61,9 @@ public class ProductController {
 		return new ResponseEntity<Product>(this.service.update(product, productID), HttpStatus.ACCEPTED);
 
 	}
+	@GetMapping("/productname/{name}")
+	public ResponseEntity <List<Product>>findByName (@PathVariable String name) {
+		return new ResponseEntity <List<Product>>(this.service.findByName(name), HttpStatus.OK);
+		
+	}
 }

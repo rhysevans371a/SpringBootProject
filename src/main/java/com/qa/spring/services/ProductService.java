@@ -1,6 +1,5 @@
 package com.qa.spring.services;
 
-import java.io.FileNotFoundException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.qa.spring.domain.Product;
-
 import com.qa.spring.repo.ProductRepository;
 
 /**
@@ -18,6 +16,11 @@ import com.qa.spring.repo.ProductRepository;
  */
 @Service
 public class ProductService {
+	public ProductService(ProductRepository repo) {
+		super();
+		this.repo = repo;
+	}
+
 //	Create instance of repository
 	@Autowired
 	private ProductRepository repo;
@@ -56,4 +59,8 @@ public class ProductService {
 		this.repo.deleteById(id);
 		return !this.repo.existsById(id);
 	}
+	//Findbyname
+		public List<Product> findByName(String name) {
+			return this.repo.findByName(name);
+		}
 }
