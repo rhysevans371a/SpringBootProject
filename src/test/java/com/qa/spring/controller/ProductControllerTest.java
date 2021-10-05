@@ -1,5 +1,6 @@
 package com.qa.spring.controller;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -74,5 +75,21 @@ public class ProductControllerTest {
 			.andExpect(status().isOk())
 			.andExpect(content().json(productAsJSON));
 	}
+	@Test
+	public void deleteSuccessTest() throws Exception {
+		Mockito.when(this.service.delete(1L)).thenReturn(true);
 	
+		mvc.perform(delete("/Product/delete/1")
+			.contentType(MediaType.APPLICATION_JSON))
+			.andExpect(status().isNoContent());
+	}
+	
+	@Test
+	public void deleteFailTest() throws Exception {
+		Mockito.when(this.service.delete(1L)).thenReturn(false);
+	
+		mvc.perform(delete("/Product/delete/1")
+			.contentType(MediaType.APPLICATION_JSON))
+			.andExpect(status().isNotFound());
+	}
 }
