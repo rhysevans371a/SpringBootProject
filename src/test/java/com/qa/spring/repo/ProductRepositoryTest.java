@@ -11,7 +11,7 @@ import nl.jqno.equalsverifier.internal.util.Assert;
 @DataJpaTest
 public class ProductRepositoryTest {
 
-//	@Autowired
+	@Autowired
 	private ProductRepository repository;
 
 
