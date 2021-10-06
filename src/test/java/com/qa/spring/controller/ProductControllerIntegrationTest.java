@@ -1,5 +1,6 @@
 package com.qa.spring.controller;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -68,4 +69,11 @@ public class ProductControllerIntegrationTest {
 		mvc.perform(get("/Product/read/1").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
 				.andExpect(content().json(inputAsJSON));
 	}
+	@Test
+	public void deleteTest() throws Exception {
+		mvc.perform(delete("/Product/delete/1")
+			.contentType(MediaType.APPLICATION_JSON))
+			.andExpect(status().isNoContent());
+	}
+	
 }
