@@ -65,5 +65,4 @@ public class ProductController {
 		return new ResponseEntity <List<Product>>(this.service.findByName(name), HttpStatus.OK);
 		
 	}
-	
 }
