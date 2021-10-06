@@ -3,6 +3,7 @@ package com.qa.spring.controller;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -27,69 +28,76 @@ import com.qa.spring.services.ProductService;
 @WebMvcTest
 
 public class ProductControllerTest {
-	
+
 	@Autowired
 	private MockMvc mvc;
-	
+
 	@Autowired
 	private ObjectMapper mapper;
-	
+
 	@MockBean
 	private ProductService service;
+
 	@Test
 	public void createTest() throws Exception {
 		Product product = new Product("Apple", "Fruit", "each", 0.50);
 		String productAsJSON = this.mapper.writeValueAsString(product);
-		
+
 		Mockito.when(this.service.create(product)).thenReturn(product);
-		
-		mvc.perform(post("/Product/create")
-			.contentType(MediaType.APPLICATION_JSON)
-			.content(productAsJSON))
-			.andExpect(status().isCreated())
-			.andExpect(content().json(productAsJSON));		
+
+		mvc.perform(post("/Product/create").contentType(MediaType.APPLICATION_JSON).content(productAsJSON))
+				.andExpect(status().isCreated()).andExpect(content().json(productAsJSON));
 	}
+
 	@Test
 	public void readAllTest() throws Exception {
 		Product product = new Product("Apple", "Fruit", "each", 0.50);
 		List<Product> output = new ArrayList<>();
 		output.add(product);
 		String outputAsJSON = this.mapper.writeValueAsString(output);
-		
+
 		Mockito.when(this.service.readAll()).thenReturn(output);
-		
-		mvc.perform(get("/Product/Read")
-			.contentType(MediaType.APPLICATION_JSON))
-			.andExpect(status().isOk())
-			.andExpect(content().json(outputAsJSON));
+
+		mvc.perform(get("/Product/Read").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+				.andExpect(content().json(outputAsJSON));
 	}
+
 	@Test
 	public void readIdTest() throws Exception {
 		Product product = new Product("Apple", "Fruit", "each", 0.50);
 		String productAsJSON = this.mapper.writeValueAsString(product);
-		
+
 		Mockito.when(this.service.read(1L)).thenReturn(product);
-		
-		mvc.perform(get("/Product/read/1")
-			.contentType(MediaType.APPLICATION_JSON))
-			.andExpect(status().isOk())
-			.andExpect(content().json(productAsJSON));
+
+		mvc.perform(get("/Product/read/1").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+				.andExpect(content().json(productAsJSON));
 	}
+
 	@Test
 	public void deleteSuccessTest() throws Exception {
 		Mockito.when(this.service.delete(1L)).thenReturn(true);
-	
-		mvc.perform(delete("/Product/delete/1")
-			.contentType(MediaType.APPLICATION_JSON))
-			.andExpect(status().isNoContent());
+
+		mvc.perform(delete("/Product/delete/1").contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isNoContent());
 	}
-	
+
 	@Test
 	public void deleteFailTest() throws Exception {
 		Mockito.when(this.service.delete(1L)).thenReturn(false);
-	
-		mvc.perform(delete("/Product/delete/1")
-			.contentType(MediaType.APPLICATION_JSON))
-			.andExpect(status().isNotFound());
+
+		mvc.perform(delete("/Product/delete/1").contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isNotFound());
 	}
+
+	@Test
+	public void updateTest() throws Exception {
+		Product product = new Product("Apple", "Fruit", "each", 0.50);
+		String productAsJSON = this.mapper.writeValueAsString(product);
+
+		Mockito.when(this.service.update(product, 1L)).thenReturn(product);
+
+		mvc.perform(put("/Product/update/1").contentType(MediaType.APPLICATION_JSON).content(productAsJSON))
+				.andExpect(status().isAccepted()).andExpect(content().json(productAsJSON));
+	}
+
 }

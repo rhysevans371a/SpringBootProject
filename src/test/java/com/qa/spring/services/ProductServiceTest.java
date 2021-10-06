@@ -18,6 +18,8 @@ import org.mockito.junit.MockitoJUnitRunner;
 import com.qa.spring.domain.Product;
 import com.qa.spring.repo.ProductRepository;
 
+import nl.jqno.equalsverifier.internal.util.Assert;
+
 @RunWith(MockitoJUnitRunner.class)
 
 public class ProductServiceTest {
@@ -92,5 +94,6 @@ public class ProductServiceTest {
 		Mockito.verify(this.repo, Mockito.times(1)).deleteById(1L);
 		Mockito.verify(this.repo, Mockito.times(1)).existsById(1L);
 	}
+
 
 }
