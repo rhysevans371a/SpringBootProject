@@ -14,4 +14,5 @@ public class ProductTest {
 		.usingGetClass()
 		.verify();
 	}
+
 }

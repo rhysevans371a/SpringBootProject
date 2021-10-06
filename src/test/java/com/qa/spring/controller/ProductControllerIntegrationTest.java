@@ -89,4 +89,12 @@ public class ProductControllerIntegrationTest {
 			.andExpect(status().isAccepted())
 			.andExpect(content().json(outputAsJSON));
 	}
+//	@Test
+//	public void findByNameTest() throws Exception {
+//		Product input = new Product(1L, "Apple", "Fruit", "each", 0.50);
+//		String inputAsJSON = this.mapper.writeValueAsString(input);
+//
+//		mvc.perform(get("/Product/productname/Apple").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+//				.andExpect(content().json(inputAsJSON));
+//}
 }
