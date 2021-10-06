@@ -3,6 +3,7 @@ package com.qa.spring.controller;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -75,5 +76,17 @@ public class ProductControllerIntegrationTest {
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isNoContent());
 	}
-	
+	@Test
+	public void updateTest() throws Exception {
+		Product input = new Product("Apple", "Fruit", "each", 0.50);
+		String inputAsJSON = this.mapper.writeValueAsString(input);
+		Product output = new Product(1L, "Apple", "Fruit", "each", 0.50);
+		String outputAsJSON = this.mapper.writeValueAsString(output);
+		
+		mvc.perform(put("/Product/update/1")
+			.contentType(MediaType.APPLICATION_JSON)
+			.content(inputAsJSON))
+			.andExpect(status().isAccepted())
+			.andExpect(content().json(outputAsJSON));
+	}
 }
