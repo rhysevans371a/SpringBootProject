@@ -1,6 +1,5 @@
 package com.qa.spring.controller;
 
-import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -51,10 +50,10 @@ public class ProductController {
 
 	// delete
 	@DeleteMapping("/delete/{productID}")
-	public ResponseEntity<Boolean> delete(@PathVariable Long productID) throws FileNotFoundException {
-		return new ResponseEntity<Boolean>(this.service.delete(productID), HttpStatus.NO_CONTENT);
+	public ResponseEntity<Boolean> delete(@PathVariable Long productID) {
+		return (this.service.delete(productID)) ? new ResponseEntity<>(HttpStatus.NO_CONTENT) : 
+			new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
-
 	// Update
 	@PutMapping("/update/{productID}")
 	public ResponseEntity<Product> update(@PathVariable Long productID, @RequestBody Product product) {
@@ -66,4 +65,5 @@ public class ProductController {
 		return new ResponseEntity <List<Product>>(this.service.findByName(name), HttpStatus.OK);
 		
 	}
+	
 }
