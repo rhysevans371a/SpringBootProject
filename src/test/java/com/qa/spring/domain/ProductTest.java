@@ -9,10 +9,9 @@ import nl.jqno.equalsverifier.Warning;
 public class ProductTest {
 	@Test
 	public void testEquals() {
-		EqualsVerifier.forClass(Product.class)
-		.suppress(Warning.NONFINAL_FIELDS)
-		.usingGetClass()
-		.verify();
-	}
+	    EqualsVerifier.forClass( Product.class )
+        .suppress( Warning.STRICT_INHERITANCE )
+        .verify();
+}
 
 }

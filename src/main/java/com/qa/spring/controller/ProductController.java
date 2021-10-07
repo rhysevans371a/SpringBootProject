@@ -1,7 +1,6 @@
 package com.qa.spring.controller;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.qa.spring.domain.Product;
+import com.qa.spring.exceptions.ProductNotFoundException;
 import com.qa.spring.services.ProductService;
 
 @RestController
@@ -40,10 +40,9 @@ public class ProductController {
 	@GetMapping("/read/{productID}")
 	public ResponseEntity<Product> read(@PathVariable Long productID) {
 		try {
-			Product product = service.read(productID);
+			service.read(productID);
 			return new ResponseEntity<Product>(this.service.read(productID), HttpStatus.OK);
-		} 
-		catch (NoSuchElementException e) {
+		} catch (ProductNotFoundException e) {
 			return new ResponseEntity<Product>(HttpStatus.NOT_FOUND);
 		}
 	}
@@ -51,18 +50,20 @@ public class ProductController {
 	// delete
 	@DeleteMapping("/delete/{productID}")
 	public ResponseEntity<Boolean> delete(@PathVariable Long productID) {
-		return (this.service.delete(productID)) ? new ResponseEntity<>(HttpStatus.NO_CONTENT) : 
-			new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		return (this.service.delete(productID)) ? new ResponseEntity<>(HttpStatus.NO_CONTENT)
+				: new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
+
 	// Update
 	@PutMapping("/update/{productID}")
 	public ResponseEntity<Product> update(@PathVariable Long productID, @RequestBody Product product) {
 		return new ResponseEntity<Product>(this.service.update(product, productID), HttpStatus.ACCEPTED);
 
 	}
+
 	@GetMapping("/productname/{name}")
-	public ResponseEntity <List<Product>>findByName (@PathVariable String name) {
-		return new ResponseEntity <List<Product>>(this.service.findByName(name), HttpStatus.OK);
-		
+	public ResponseEntity<List<Product>> findByName(@PathVariable String name) {
+		return new ResponseEntity<List<Product>>(HttpStatus.OK);
+
 	}
 }

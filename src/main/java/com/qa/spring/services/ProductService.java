@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.qa.spring.domain.Product;
+import com.qa.spring.exceptions.ProductNotFoundException;
 import com.qa.spring.repo.ProductRepository;
 
 /**
@@ -40,7 +41,8 @@ public class ProductService {
 
 	// update
 	public Product update(Product product, Long productID) {
-		Product exists = this.repo.findById(productID).get();
+		Product exists = this.repo.findById(productID)
+				.orElseThrow(() -> new ProductNotFoundException("Product with " + productID + " is Not Found!"));
 		exists.setProductName(product.getProductName());
 		exists.setAisleName(product.getAisleName());
 		exists.setUnitPrice(product.getUnitPrice());
