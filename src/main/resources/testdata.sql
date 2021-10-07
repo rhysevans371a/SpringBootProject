@@ -1,0 +1,1 @@
+INSERT INTO `product` (`product_name`, `aisle_name`, `unit_size`, `unit_price`) VALUES ('Apple', 'Fruit', 'each', 0.50);
