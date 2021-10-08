@@ -1,4 +1,4 @@
-Practical Project Specification
+# Spring Boot CRUD API Application Project
 
 -   **Why are we doing this?**
 
@@ -36,30 +36,30 @@ Practical Project Specification
     **Create**
 
     **![A screenshot of a computer Description automatically
-    generated](media/0f261151eb9c18a2ee4a9348bbffd6b9.png)**
+    generated](https://github.com/rhysevans371a/SpringBootProject/blob/main/Documentation/Create.png)**
 
     **Update**
 
     **![A screenshot of a computer Description automatically
-    generated](media/d9d3018b3105d4171f86ebf4bd4851b0.png)**
+    generated](https://github.com/rhysevans371a/SpringBootProject/blob/main/Documentation/update.png)**
 
     **Delete**![Graphical user interface, text, application Description
-    automatically generated](media/4d58a9d355e6d1fe79c81baa4d52718c.png)
+    automatically generated](https://github.com/rhysevans371a/SpringBootProject/blob/main/Documentation/delete.png)
 
     **Find by Product name**![Graphical user interface, text, application
     Description automatically
-    generated](media/4981dad9e460866a931c7d14b7418bb2.png)
+    generated](https://github.com/rhysevans371a/SpringBootProject/blob/main/Documentation/getbyproductname.png)
 
     **Read All**![Graphical user interface, text, application, email Description
-    automatically generated](media/56c131e0afa7255887a9b0cd10e70587.png)
+    automatically generated](https://github.com/rhysevans371a/SpringBootProject/blob/main/Documentation/ReadAll.png)
 
-    **Find by product** ![Graphical user interface, text Description
-    automatically generated](media/defcfc091321616e5368b246ab3e01ba.png)
+    **Custom exception** ![Graphical user interface, text Description
+    automatically generated](https://github.com/rhysevans371a/SpringBootProject/blob/main/Documentation/customexception.png)
 
     **Find by product ID**
 
     ![Text Description automatically
-    generated](media/001d4288bba5cf6bfee87801f65e6395.png)
+    generated](https://github.com/rhysevans371a/SpringBootProject/blob/main/Documentation/ReadById.png)
 
 -   **Screenshots of your database to prove that data is being persisted.**
 
@@ -67,7 +67,7 @@ Practical Project Specification
     Workbench to demonstrate.
 
     ![Graphical user interface, text, application Description automatically
-    generated](media/2f9a0dbed1bea56e6b60167455ec0631.png)
+    generated](https://github.com/rhysevans371a/SpringBootProject/blob/main/Documentation/workbench.png)
 
 -   **Screenshot of your test results, including coverage report.**
 
@@ -76,18 +76,18 @@ Practical Project Specification
     coverage.
 
 ![A screenshot of a computer Description automatically generated with medium
-confidence](media/c8fb1e27c65a941f1a735bc787e96b40.png)
+confidence](https://github.com/rhysevans371a/SpringBootProject/blob/main/Documentation/all%20tests%20run.png)
 
 ![A screenshot of a computer Description automatically generated with medium
-confidence](media/dfae5d3c23720776b27e24bd45fa2941.png)
+confidence](https://github.com/rhysevans371a/SpringBootProject/blob/main/Documentation/application%20unit%20test.png)
 
 ![A screenshot of a computer Description automatically
-generated](media/61b9d6ffb995a9b652d31ab412cf921d.png)![A screenshot of a
+generated](https://github.com/rhysevans371a/SpringBootProject/blob/main/Documentation/controller%20unit%20test.png)![A screenshot of a
 computer Description automatically generated with medium
-confidence](media/e104d7cb23fc7ee23690607a50017ca5.png)
+confidence](https://github.com/rhysevans371a/SpringBootProject/blob/main/Documentation/integration%20testing.png)
 
 ![A screenshot of a computer Description automatically generated with medium
-confidence](media/7f54c16f646f19a569bceedca78a3041.png)
+confidence](https://github.com/rhysevans371a/SpringBootProject/blob/main/Documentation/service%20unit%20test.png)
 
 **Link to my**
 [**Jira**](https://qa-springboot-project.atlassian.net/jira/software/projects/QS/boards/1)
@@ -99,7 +99,7 @@ As part of the allocated stretch goals I was able to implement custom
 exceptions, Lombok and custom queries with the addition of and ERD diagram and
 Class diagram that can be seen below. ![Graphical user interface, application,
 Word Description automatically
-generated](media/d0f6be4f1b75508a6e214bd2d05f4ab0.png)
+generated](https://github.com/rhysevans371a/SpringBootProject/blob/main/Documentation/umldiag.png)
 
 ![Graphical user interface, text, application, chat or text message Description
-automatically generated](media/3c9d585d7e255d9e181c938623f1e195.png)
+automatically generated](https://github.com/rhysevans371a/SpringBootProject/blob/main/Documentation/ERD.png)
