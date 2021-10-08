@@ -10,6 +10,7 @@ import lombok.Setter;
 @Setter
 @ResponseStatus(value = HttpStatus.NOT_FOUND)
 
+//	Custom exception extending RuntimeException for when no matching products are found
 public class ProductNotFoundException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 	private String message;

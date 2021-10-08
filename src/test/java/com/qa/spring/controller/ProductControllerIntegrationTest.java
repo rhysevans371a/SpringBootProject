@@ -41,6 +41,7 @@ public class ProductControllerIntegrationTest {
 	private ObjectMapper mapper;
 
 	@Test
+//	Create entry test
 	public void createTest() throws Exception {
 		Product input = new Product("Pear", "Fruit", "each", 0.50);
 		Product output = new Product(2L, "Pear", "Fruit", "each", 0.50);
@@ -52,6 +53,7 @@ public class ProductControllerIntegrationTest {
 	}
 
 	@Test
+//	Read all entries test
 	public void readAllTest() throws Exception {
 		Product input = new Product(1L, "Apple", "Fruit", "each", 0.50);
 		List<Product> output = new ArrayList<>();
@@ -63,6 +65,7 @@ public class ProductControllerIntegrationTest {
 	}
 
 	@Test
+//	Read entry by productId test
 	public void readByIdTest() throws Exception {
 		Product input = new Product(1L, "Apple", "Fruit", "each", 0.50);
 		String inputAsJSON = this.mapper.writeValueAsString(input);
@@ -70,24 +73,24 @@ public class ProductControllerIntegrationTest {
 		mvc.perform(get("/Product/read/1").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
 				.andExpect(content().json(inputAsJSON));
 	}
+
 	@Test
+//	Delete an entry test
 	public void deleteTest() throws Exception {
-		mvc.perform(delete("/Product/delete/1")
-			.contentType(MediaType.APPLICATION_JSON))
-			.andExpect(status().isNoContent());
+		mvc.perform(delete("/Product/delete/1").contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isNoContent());
 	}
+
 	@Test
+//	Update an entry test
 	public void updateTest() throws Exception {
 		Product input = new Product("Apple", "Fruit", "each", 0.50);
 		String inputAsJSON = this.mapper.writeValueAsString(input);
 		Product output = new Product(1L, "Apple", "Fruit", "each", 0.50);
 		String outputAsJSON = this.mapper.writeValueAsString(output);
-		
-		mvc.perform(put("/Product/update/1")
-			.contentType(MediaType.APPLICATION_JSON)
-			.content(inputAsJSON))
-			.andExpect(status().isAccepted())
-			.andExpect(content().json(outputAsJSON));
+
+		mvc.perform(put("/Product/update/1").contentType(MediaType.APPLICATION_JSON).content(inputAsJSON))
+				.andExpect(status().isAccepted()).andExpect(content().json(outputAsJSON));
 	}
 
 }

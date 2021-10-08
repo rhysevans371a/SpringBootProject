@@ -61,9 +61,10 @@ public class ProductController {
 
 	}
 
+	//Find product by name
 	@GetMapping("/productname/{name}")
 	public ResponseEntity<List<Product>> findByName(@PathVariable String name) {
-		return new ResponseEntity<List<Product>>(HttpStatus.OK);
+		return new ResponseEntity<List<Product>>(this.service.findByName(name), HttpStatus.OK);
 
 	}
 }
