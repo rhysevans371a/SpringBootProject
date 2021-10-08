@@ -57,7 +57,7 @@ public class ProductService {
 		return !this.repo.existsById(productID);
 	}
 
-	// FindbyName
+	// Findbyname
 	public List<Product> findByName(String name) {
 		return this.repo.findByName(name);
 	}

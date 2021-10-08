@@ -39,7 +39,6 @@ public class ProductControllerTest {
 	private ProductService service;
 
 	@Test
-//	Create entry test
 	public void createTest() throws Exception {
 		Product product = new Product("Apple", "Fruit", "each", 0.50);
 		String productAsJSON = this.mapper.writeValueAsString(product);
@@ -51,7 +50,6 @@ public class ProductControllerTest {
 	}
 
 	@Test
-//	Read all entries test
 	public void readAllTest() throws Exception {
 		Product product = new Product("Apple", "Fruit", "each", 0.50);
 		List<Product> output = new ArrayList<>();
@@ -65,7 +63,6 @@ public class ProductControllerTest {
 	}
 
 	@Test
-//	Read entry by productId test
 	public void readIdTest() throws Exception {
 		Product product = new Product("Apple", "Fruit", "each", 0.50);
 		String productAsJSON = this.mapper.writeValueAsString(product);
@@ -77,7 +74,6 @@ public class ProductControllerTest {
 	}
 
 	@Test
-//	Delete test for when entry exists
 	public void deleteSuccessTest() throws Exception {
 		Mockito.when(this.service.delete(1L)).thenReturn(true);
 
@@ -86,7 +82,6 @@ public class ProductControllerTest {
 	}
 
 	@Test
-//	Delete test for when no entry exists
 	public void deleteFailTest() throws Exception {
 		Mockito.when(this.service.delete(1L)).thenReturn(false);
 
@@ -95,7 +90,6 @@ public class ProductControllerTest {
 	}
 
 	@Test
-//	Update an entry test
 	public void updateTest() throws Exception {
 		Product product = new Product("Apple", "Fruit", "each", 0.50);
 		String productAsJSON = this.mapper.writeValueAsString(product);

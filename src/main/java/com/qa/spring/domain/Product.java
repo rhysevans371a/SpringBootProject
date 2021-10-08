@@ -18,9 +18,10 @@ import lombok.NoArgsConstructor;
  *
  */
 @Entity
-@Data // Lombok annotation to use getter, setter and equals() etc
-@AllArgsConstructor // Lombok annotation to call all variable constructor
-@NoArgsConstructor // Lombok annotation to call empty constructor
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+
 
 public class Product {
 //	Column names for database
@@ -36,19 +37,6 @@ public class Product {
 	private String unitSize;
 
 	private double unitPrice;
-
-	public Product(@NotNull String productName, String aisleName, String unitSize, double unitPrice) {
-		super();
-		this.productName = productName;
-		this.aisleName = aisleName;
-		this.unitSize = unitSize;
-		this.unitPrice = unitPrice;
-	}
-
-	/***************************************************************************************
-	 * All other getter and setters etc commented out due to Lombok not requiring
-	 * these
-	 ***************************************************************************************/
 
 //	Constructors
 
@@ -74,7 +62,13 @@ public class Product {
 //	 * @param unitSize
 //	 * @param unitPrice
 //	 */
-
+	public Product(@NotNull String productName, String aisleName, String unitSize, double unitPrice) {
+		super();
+		this.productName = productName;
+		this.aisleName = aisleName;
+		this.unitSize = unitSize;
+		this.unitPrice = unitPrice;
+	}
 //
 //	/**
 //	 * 
@@ -174,5 +168,6 @@ public class Product {
 //				&& Double.doubleToLongBits(unitPrice) == Double.doubleToLongBits(other.unitPrice)
 //				&& Objects.equals(unitSize, other.unitSize);
 //	}
+
 
 }
